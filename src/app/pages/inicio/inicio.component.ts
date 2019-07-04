@@ -10,16 +10,16 @@ import { Observable } from 'rxjs';
 export class InicioComponent implements OnInit {
   items: Observable<any[]>;
   ventas = 0;
-  mensaje = "";
-  fecha:any;
-  hora:any;
+  mensaje = '';
+  fecha: any;
+  hora: any;
   time = new Date();
   timer;
   videoplay = false;
   duracionvideo = 0;
-  urlvideo = "";
+  urlvideo = '';
   videoplayer: HTMLVideoElement;
-  constructor(private afs:AngularFirestore) {
+  constructor(private afs: AngularFirestore) {
 
 
    }
@@ -30,20 +30,19 @@ export class InicioComponent implements OnInit {
     this.hora = Date.now();
     this.items = this.afs.collectionGroup<any>('dashboard', )
       .valueChanges();
-    this.items.subscribe(elements=>{
+    this.items.subscribe(elements => {
 
         this.ventas = elements[0].ventas;
         this.mensaje = elements[0].mensaje;
         if (elements[0].videoplay === -1) {
           this.videoplay = true;
-          this.urlvideo = "https://www.themyt.com/video/promo2.mp4";
          this.videoplayer = document.getElementById('video') as HTMLVideoElement;
+         this.videoplayer.src = elements[0].video;
           console.log(document.getElementById('video'));
 
           this.videoplayer.play();
           console.log(this.urlvideo);
-        }
-        else{
+        } else {
           this.videoplay = false;
           this.videoplayer = document.getElementById('video') as HTMLVideoElement;
           this.videoplayer.pause();
@@ -54,7 +53,5 @@ export class InicioComponent implements OnInit {
       this.time = new Date();
     }, 1000);
   }
-  ngOnDestroy(){
-    clearInterval(this.timer);
-  }
+
 }

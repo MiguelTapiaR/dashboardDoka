@@ -4,18 +4,19 @@ import { InicioComponent } from './app/pages/inicio/inicio.component';
 
 const app_routes: Routes = [
   {path: '', component: InicioComponent},
+  {path: '**', pathMatch: 'full', redirectTo: ''}
 
 
 
-]
+];
 @NgModule({
-  imports:[
+  imports: [
       RouterModule.forRoot( app_routes)
   ],
   exports: [
       RouterModule
   ]
 })
-export class AppRouting{
+export class AppRoutingModule {
 
 }
