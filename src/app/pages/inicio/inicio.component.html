@@ -1,0 +1,99 @@
+<div class="site-header" [hidden]="videoplay">
+  <div class="background">
+    <div class="barra">
+      <div class="contenedor-logo">
+        <div class="logo">
+          <img class="logo" src="assets/img/logo.png">
+        </div>
+      </div>
+    </div>
+
+    <section class="contenedor-ventas">
+
+
+    <div class="row">
+      <div class="column titulo-ventas" >
+        <b>SALES<BR> COUNTER</b>
+      </div>
+      <div class="column numero-ventas">
+        <b> {{ventas |currency}}  </b>
+      </div>
+    </div>
+  </section>
+    <section class="programa">
+      <div class="contenido-programa">
+        <div class="contenedor-reloj">
+{{time | date: "hh:mm:ss"}}
+        </div>
+      </div>
+
+    </section>
+    <section class="fecha">
+      <div class="contenido-programa">
+        <div class="contenedor-fecha">
+            {{ fecha |date:"EEEE dd MMMM y"}}
+        </div>
+      </div>
+
+    </section>
+    <footer class="site-footer">
+      <div class="contenedor-footer clearfix">
+        <div class="footer-clima">
+          <div class="clima-actual">
+
+            <div class="icono-clima">
+              <img src="assets/img/clima.png" style="width:13vh" >
+            </div>
+            <div class="descripcion-clima">
+              <b>Partialy cloudly</b>
+            </div>
+            <div class="temperatura">
+              <div class="contenido-temperatura">
+                27°
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+            <div class="clima-proximo climas-siguientes">
+              <img src="assets/img/clima.png" style="width:6vh" >
+              <b>Partialy cloudly</b>
+              VIE 21
+            </div>
+            <div class="clima-proximo climas-siguientes2">
+              <img src="assets/img/clima.png"style="width:6vh" >
+              <b>Partialy cloudly</b>
+              SAB 21
+            </div>
+            <div class="clima-proximo climas-siguientes3">
+                <img src="assets/img/clima.png" style="width:6vh" >
+                <b>Partialy cloudly</b>
+                27°
+
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-noticias">
+{{mensaje}}
+        </div>
+        <div class="footer-logo">
+logo
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</div>
+<div class="site-header" [hidden]="!videoplay" >
+  <video width="100%" height="100%" #video loop="" poster="img/poster.jpg" id ="video">
+    <source src="https://www.themyt.com/video/impresora.mp4" type="video/mp4">
+    <p>Tu navegador no soporta video</p>
+</video>
+</div>
