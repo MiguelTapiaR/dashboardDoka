@@ -20,7 +20,7 @@ export class InicioComponent implements OnInit {
   urlvideo = '';
   videoplayer: HTMLVideoElement;
   constructor(private afs: AngularFirestore) {
-
+    
 
    }
 
@@ -34,17 +34,19 @@ export class InicioComponent implements OnInit {
 
         this.ventas = elements[0].ventas;
         this.mensaje = elements[0].mensaje;
+        this.urlvideo = elements[0].video;
+        this.videoplayer = document.getElementById('video') as HTMLVideoElement;
         if (elements[0].videoplay === -1) {
           this.videoplay = true;
-         this.videoplayer = document.getElementById('video') as HTMLVideoElement;
          this.videoplayer.src = elements[0].video;
           console.log(document.getElementById('video'));
-
-          this.videoplayer.play();
+          this.videoplayer.load();
+          this.playVideo(this.videoplayer);
+          //this.videoplayer.play();
           console.log(this.urlvideo);
         } else {
           this.videoplay = false;
-          this.videoplayer = document.getElementById('video') as HTMLVideoElement;
+          
           this.videoplayer.pause();
         }
       });
@@ -52,6 +54,17 @@ export class InicioComponent implements OnInit {
     this.timer = setInterval(() => {
       this.time = new Date();
     }, 1000);
+  }
+  getVideo(): string {
+    return this.urlvideo;
+  }
+
+  playVideo(player: HTMLVideoElement){
+    //this.videoplayer.play();
+    const playPromise = player.play();
+    if(playPromise !== null){
+      playPromise.catch(()=>{player.play();});
+    }
   }
 
 }

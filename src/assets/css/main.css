@@ -35,6 +35,16 @@ div.background{
   width: 99%;
   margin: 0 auto;
 }
+.blur {
+ 
+
+  filter: blur(6px);
+  width: 99%;
+   height: 98vh;
+   position: absolute;
+
+}
+
 
 /*barra*/
 div.barra{
@@ -215,4 +225,26 @@ footer .footer-logo{
   width: 32.2%;
   height: 13vh;
   background-color: #004A8E;
+}
+.video-active{
+  margin: 0 auto ;
+  position: absolute;
+   
+  width: 95%;
+  height: 95vh;
+}
+.video-active2{
+  margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+margin-bottom: auto;
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+  
+  width: 90%;
+  height: 90%;
+  z-index: -1;
 }
