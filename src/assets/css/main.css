@@ -153,15 +153,18 @@ div .clima-actual{
 }
 .icono-clima{
   float: left;
-  width: 33%;
+  width: 20%;
+  text-align: center;
   height: 15vh;
   background-color: #004A8E;
+ 
+    
 }
 .descripcion-clima{
   float: left;
-  width: 33%;
+  width: 46%;
   height: 15vh;
-  padding-top: 4vh;
+  padding-top: 2vh;
   color: #fff;
   font-size: 3vh;
   background-color: #004A8E;
@@ -186,12 +189,12 @@ footer .footer-noticias{
   /*background-color: #FFE600;*/
   width: 66%;
   float: left;
-  margin-top: 14.5vh;
+  margin-top: 8.5vh;
     background-position: center;
   background-size: cover;
-  padding-top: 2%;
+  
 background-image: url('../img/dokaNewsRaya.png');
-  height: 14vh;
+  height: 20vh;
   font-size: 4vh;
   color: #004A8E;
 }
@@ -219,6 +222,9 @@ footer .footer-logo{
   width: 32.2%;
   height: 13vh;
   background-color: #004A8E;
+  color: #FFF;
+  text-align: center;
+  
 }
 .climas-siguientes2{
   margin-left: .5vh;
@@ -227,6 +233,8 @@ footer .footer-logo{
   width: 32.2%;
   height: 13vh;
   background-color: #004A8E;
+  color: #FFF;
+  text-align: center;
 }
 .climas-siguientes3{
   margin-left: .5vh;
@@ -235,6 +243,8 @@ footer .footer-logo{
   width: 32.2%;
   height: 13vh;
   background-color: #004A8E;
+  color: #FFF;
+  text-align: center;
 }
 .video-active{
   margin: 0 auto ;
@@ -271,10 +281,17 @@ width: 100%;
 .breaking-news-headline {
   display: block;
   position: absolute;
-  font-size: 4vh;
-  margin-top: -22px;
+  font-size: 7vh;
+  margin-top: px;
   color: #004A8E;
-  margin-left: 0;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 13vh;     /* fallback */
+   max-height: 13vh;      /* fallback */
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
+  
   
 }
 
@@ -283,13 +300,15 @@ width: 100%;
 #breaking-news-colour {
   height: 30px;
   width: 694px;
+  
 }
 
 #breaking-news-container {
   height: 13vh;
-  width: 55%;
+  width: 45%;
   overflow: hidden;
   position: absolute;
+  margin-left: 2%;
   &:before {
     content: "";
     width: 30px;

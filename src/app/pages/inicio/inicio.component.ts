@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-inicio',
@@ -19,15 +21,31 @@ export class InicioComponent implements OnInit {
   duracionvideo = 0;
   urlvideo = '';
   videoplayer: HTMLVideoElement;
+  private appId: string;
+  private appCode: string;
 
-  blurClass="";
-  constructor(private afs: AngularFirestore) {
+  public weather: any;
+
+  public climaHoy: Clima;
+  public climaDos: Clima;
+  public climaTres: Clima;
+  public climaCuatro: Clima;
+  blurClass = '';
+  constructor(private afs: AngularFirestore, private http: HttpClient) {
     
-
+    this.appId = 'vdhTFADLJqQqnM351sop';
+    this.appCode = 'l5HgBh54ZJ6YNxLKFgGtmQ';
+    this.weather = [];
    }
 
   ngOnInit() {
-
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.getWeather(position.coords);
+      });
+    } else {
+      console.error('The browser does not support geolocation...');
+    }
     this.fecha = new Date().getTime();
     this.hora = Date.now();
     this.items = this.afs.collectionGroup<any>('dashboard', )
@@ -69,6 +87,43 @@ export class InicioComponent implements OnInit {
     if(playPromise !== null){
       playPromise.catch(()=>{player.play();});
     }
+  }
+
+  public getWeather(coordinates: any) {
+    // tslint:disable-next-line: max-line-length
+    this.http.jsonp('https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=' + coordinates.latitude + "&longitude=" + coordinates.longitude + "&app_id=" + this.appId + "&app_code=" + this.appCode, "jsonpCallback")
+      .pipe(map(result => (<any>result).dailyForecasts.forecastLocation))
+      .subscribe(result => {
+        
+        this.climaHoy = {
+          descripcion:  result.forecast[0].description,
+          imagen: result.forecast[0].iconLink,
+          temperatura: result.forecast[0].highTemperature,
+          dia: result.forecast[0].utcTime
+        };
+        this.climaDos = {
+          descripcion:  result.forecast[1].description,
+          imagen: result.forecast[1].iconLink,
+          temperatura: result.forecast[1].highTemperature,
+          dia: result.forecast[1].utcTime
+        };
+        this.climaTres = {
+          descripcion:  result.forecast[2].description,
+          imagen: result.forecast[2].iconLink,
+          temperatura: result.forecast[2].highTemperature,
+          dia: result.forecast[2].utcTime
+        };
+        this.climaCuatro = {
+          descripcion:  result.forecast[3].description,
+          imagen: result.forecast[3].iconLink,
+          temperatura: result.forecast[3].highTemperature,
+          dia: result.forecast[3].utcTime
+        };
+        
+
+      }, error => {
+        console.error(error);
+      });
   }
 
 }

@@ -45,14 +45,14 @@
           <div class="clima-actual">
 
             <div class="icono-clima">
-              <img src="assets/img/clima.png" style="width:13vh" >
+              <img [src]=climaHoy.imagen style="width:6vh;margin-top: 4vh;" >
             </div>
             <div class="descripcion-clima">
-              <b>Partialy cloudly</b>
+              <b>{{climaHoy.descripcion}}</b>
             </div>
             <div class="temperatura">
               <div class="contenido-temperatura">
-                27°
+                {{climaHoy.temperatura.slice(0,-3) }}°
 
               </div>
 
@@ -62,26 +62,28 @@
 
 
             <div class="clima-proximo climas-siguientes">
-              <img src="assets/img/clima.png" style="width:6vh" >
-              <b>Partialy cloudly</b>
-              VIE 21
+              <img [src]=climaDos.imagen style="width:6vh;margin-top: 1vh;" ><br>
+              
+              {{climaDos.temperatura.slice(0,-3)}}°<br>
+              {{climaHoy.dia | date }}
             </div>
             <div class="clima-proximo climas-siguientes2">
-              <img src="assets/img/clima.png"style="width:6vh" >
-              <b>Partialy cloudly</b>
-              SAB 21
+              <img [src]=climaTres.imagen style="width:6vh;margin-top: 1vh;"><br>
+              
+              {{climaTres.temperatura.slice(0,-3)}}°<br>
+              {{climaDos.dia | date }}
             </div>
             <div class="clima-proximo climas-siguientes3">
-                <img src="assets/img/clima.png" style="width:6vh" >
-                <b>Partialy cloudly</b>
-                27°
+                <img [src]=climaCuatro.imagen style="width:6vh;margin-top: 1vh;"><br>
+                
+                {{climaCuatro.temperatura.slice(0,-3)}}°<br>
+                {{climaTres.dia | date }}
 
 
             </div>
 
         </div>
 
-       
             <div class="footer-noticias background-footer ">
                 <div id="breaking-news-container">
                   <div id="breaking-news-colour" class="slideup animated">
