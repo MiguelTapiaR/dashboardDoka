@@ -19,6 +19,8 @@ export class InicioComponent implements OnInit {
   duracionvideo = 0;
   urlvideo = '';
   videoplayer: HTMLVideoElement;
+
+  blurClass="";
   constructor(private afs: AngularFirestore) {
     
 
@@ -46,7 +48,7 @@ export class InicioComponent implements OnInit {
           console.log(this.urlvideo);
         } else {
           this.videoplay = false;
-          
+          this.blurClass = '';
           this.videoplayer.pause();
         }
       });
@@ -61,6 +63,8 @@ export class InicioComponent implements OnInit {
 
   playVideo(player: HTMLVideoElement){
     //this.videoplayer.play();
+    this.videoplay = true;
+    this.blurClass = 'blur';
     const playPromise = player.play();
     if(playPromise !== null){
       playPromise.catch(()=>{player.play();});

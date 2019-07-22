@@ -1,6 +1,6 @@
 <div class="site-header" >
   
-  <div class="blur">
+  <div class="{{blurClass}} ">
   
     <div class="background  ">
       <div class="barra">
@@ -81,20 +81,26 @@
 
         </div>
 
-
-        <div class="footer-noticias">
-{{mensaje}}
-        </div>
-        <div class="footer-logo">
-logo
-        </div>
-
+       
+            <div class="footer-noticias background-footer ">
+                <div id="breaking-news-container">
+                  <div id="breaking-news-colour" class="slideup animated">
+                
+                  </div>
+                  
+                  <a class="breaking-news-headline delay-animated2 fadein marquee">
+                    {{mensaje}}
+                  </a>
+                </div>
+            </div>
+            
+        
       </div>
     </footer>
 
   </div>
 </div>
-<div style="filter: blur(0px);" class="site-header" class="video-active">
+<div style="filter: blur(0px);" class="site-header"[hidden]=!videoplay class="video-active">
   <video style="filter: blur(0px);"muted="muted" width="100%" height="100%" class="video-active2" [src]="getVideo()" id="video">
 
   </video>
