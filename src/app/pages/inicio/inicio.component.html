@@ -85,15 +85,12 @@
         </div>
 
             <div class="footer-noticias background-footer ">
-                <div id="breaking-news-container">
-                  <div id="breaking-news-colour" class="slideup animated">
+              <marquee direction="left" width="77%" style="font-size: 6vh; margin-top: 5%">
+                {{mensaje}}
+              </marquee>
+              
                 
-                  </div>
-                  
-                  <a class="breaking-news-headline delay-animated2 fadein marquee">
-                    {{mensaje}}
-                  </a>
-                </div>
+              
             </div>
             
         
@@ -103,8 +100,9 @@
   </div>
 </div>
 <div style="filter: blur(0px);" class="site-header"[hidden]=!videoplay class="video-active">
-  <video style="filter: blur(0px);"muted="muted" width="100%" height="100%" class="video-active2" [src]="getVideo()" id="video">
+  <video style="filter: blur(0px);" muted  width="100%" height="100%" class="video-active2" [src]="urlvideo" oncanplay="this.play()" onloadedmetadata="this.muted = true" id="video">
 
   </video>
+
 </div>
 </div>

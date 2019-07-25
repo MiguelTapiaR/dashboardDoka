@@ -32,13 +32,39 @@ export class InicioComponent implements OnInit {
   public climaCuatro: Clima;
   blurClass = '';
   constructor(private afs: AngularFirestore, private http: HttpClient) {
-    
+
     this.appId = 'vdhTFADLJqQqnM351sop';
     this.appCode = 'l5HgBh54ZJ6YNxLKFgGtmQ';
     this.weather = [];
+
+    this.climaHoy = {descripcion: '',
+                      dia: 0,
+                      imagen: '',
+                      temperatura: ''};
+
+    this.climaDos = {descripcion: '',
+                      dia: 0,
+                      imagen: '',
+                      temperatura: ''};
+
+    this.climaTres = {descripcion: '',
+                      dia: 0,
+                      imagen: '',
+                      temperatura: ''};
+
+    this.climaCuatro = {descripcion: '',
+                      dia: 0,
+                      imagen: '',
+                      temperatura: ''};
+
+
+
+
    }
 
+
   ngOnInit() {
+    this.videoplayer = document.getElementById('video') as HTMLVideoElement;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.getWeather(position.coords);
@@ -55,10 +81,10 @@ export class InicioComponent implements OnInit {
         this.ventas = elements[0].ventas;
         this.mensaje = elements[0].mensaje;
         this.urlvideo = elements[0].video;
-        this.videoplayer = document.getElementById('video') as HTMLVideoElement;
+
         if (elements[0].videoplay === -1) {
           this.videoplay = true;
-         this.videoplayer.src = elements[0].video;
+          //this.videoplayer.src = elements[0].video;
           console.log(document.getElementById('video'));
           this.videoplayer.load();
           this.playVideo(this.videoplayer);
@@ -80,7 +106,9 @@ export class InicioComponent implements OnInit {
   }
 
   playVideo(player: HTMLVideoElement){
-    //this.videoplayer.play();
+
+
+    console.log(player.duration)
     this.videoplay = true;
     this.blurClass = 'blur';
     const playPromise = player.play();
