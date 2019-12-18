@@ -16,7 +16,7 @@
 
     <div class="row">
       <div class="column titulo-ventas" >
-        <b>SALES<BR> COUNTER</b>
+        <b>COBRANZA<BR>A LA FECHA</b>
       </div>
       <div class="column numero-ventas">
         <b> {{ventas |currency}}  </b>
@@ -100,7 +100,7 @@
   </div>
 </div>
 <div style="filter: blur(0px);" class="site-header"[hidden]=!videoplay class="video-active">
-  <video style="filter: blur(0px);" muted  width="100%" height="100%" class="video-active2" [src]="urlvideo" oncanplay="this.play()" onloadedmetadata="this.muted = true" id="video">
+  <video style="filter: blur(0px);"  width="100%" height="100%" class="video-active2" [src]="urlvideo" oncanplay="this.play()" onloadedmetadata="this.muted = false" id="video"(loadedmetadata)="getDuration($event)">
 
   </video>
 

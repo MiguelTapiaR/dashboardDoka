@@ -101,9 +101,6 @@ export class InicioComponent implements OnInit {
       this.time = new Date();
     }, 1000);
   }
-  getVideo(): string {
-    return this.urlvideo;
-  }
 
   playVideo(player: HTMLVideoElement){
 
@@ -113,7 +110,8 @@ export class InicioComponent implements OnInit {
     this.blurClass = 'blur';
     const playPromise = player.play();
     if(playPromise !== null){
-      playPromise.catch(()=>{player.play();});
+      playPromise.catch(() => {player.play();
+      player.muted = false;});
     }
   }
 
@@ -152,6 +150,10 @@ export class InicioComponent implements OnInit {
       }, error => {
         console.error(error);
       });
+  }
+  getDuration(e) {
+    this.duracionvideo = e.target.duration + 1;
+    console.log(this.duracionvideo);
   }
 
 }
