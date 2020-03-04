@@ -1,6 +1,6 @@
-<div class="site-header" >
+<div class="site-header" [hidden]="true" >
   
-  <div class="{{blurClass}} ">
+  <div  class="{{blurClass}} ">
   
     <div class="background  ">
       <div class="barra">
@@ -105,4 +105,121 @@
   </video>
 
 </div>
+</div>
+<div >
+  <div class="background-cobrometro">
+    <div class="contenedor-izq">
+      <div class="titulo">
+        <!-- <img src="img/clima.png"class="img-titulo" width="100px"/> -->
+      </div>
+      <div class="cobradores-contenedor">
+        <table cellpadding="0" width="100%"style="margin-top:%">
+          <tr *ngFor="let item of itemsCobradores | async" class="animated zoomIn ">
+            <td  > <img [src]="item.imagen"class="img-titulo" width="80px"/></td>
+            <td class="texto-primer-cobrador " width="" > {{item.nombre}}</td>
+            <td class="texto-primer-cobrador" align="right"> {{item.cantidad |currency}}</td>
+          </tr>
+          <!-- <tr>
+            <td  > <img src="img/foto1.jpg"class="img-titulo" width="80px"/></td>
+            <td class="texto-segundos-cobrador" width="" > GONZALEZ</td>
+            <td class="texto-segundos-cobrador"align="left"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td  > <img src="img/foto1.jpg"class="img-titulo" width="80px"/></td>
+            <td class="texto-segundos-cobrador" width="" > GONZALEZ</td>
+            <td class="texto-segundos-cobrador"align="left"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td  > <img src="img/foto1.jpg"class="img-titulo" width="80px"/></td>
+            <td class="texto-segundos-cobrador" width="" > GONZALEZ</td>
+            <td class="texto-segundos-cobrador"align="left"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td  > <img src="img/foto1.jpg"class="img-titulo" width="80px"/></td>
+            <td class="texto-segundos-cobrador" width="" > GONZALEZ</td>
+            <td class="texto-segundos-cobrador"align="left"> $60,000,000</td>
+          </tr> -->
+  
+  
+  
+        </table>
+        <div class="foto-cobradores-contenedor">
+          <!-- <img src="img/clima.png"class="img-titulo" width="100px"/> -->
+        </div>
+  
+      </div>
+    </div>
+    <div class="contenedor-der">
+      <div class="titulo">
+        <!-- <img src="img/clima.png"class="img-titulo" width="100px"/> -->
+      </div>
+  
+      <div class="contenedor-texto-ventas">
+        <table cellpadding="0" width="100%"style="margin-top:13%">
+          <tr *ngFor="let itemVendedor of itemsVendedores | async">
+            <td class="primer-vendedor" width="49%"  align="right"> {{itemVendedor.nombre}}</td>
+            <td class="primer-vendedor" width="49%"> {{itemVendedor.cantidad | currency}} 
+              <img width="20px;" [src]="itemVendedor.imagen">
+            </td>
+          </tr>
+          <!-- <tr>
+            <td class="segundos-vendedores" width="33%"   align="right">
+               MARCO</td>
+  
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr>
+          <tr>
+            <td class="segundos-vendedores" width="33%"  align="right"> MARCO</td>
+            <td class="segundos-vendedores" width="66%"> $60,000,000</td>
+          </tr> -->
+        </table>
+        <!-- <div class="nombre-cobradores-contenedor">
+          <p class="primer-vendedor" >
+          MARCO
+        </p>
+        </div>
+        <div class="cantidad-cobradores-contenedor">
+          <p class="primer-vendedor">
+          $60,000,000
+        </p>
+        </div>
+        <div class="nombre-cobradores-contenedor">
+          <p class="segundos-vendedores" >
+          MARCO
+        </p>
+        </div>
+        <div class="cantidad-cobradores-contenedor">
+          <p class="segundos-vendedores">
+          $60,000,000
+        </p>
+        </div> -->
+      </div>
+  
+      <div class="contenedor-texto-ventas">
+  
+      </div>
+  
+  
+    </div>
+  </div>
 </div>
